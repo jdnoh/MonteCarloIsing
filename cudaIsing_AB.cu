@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
     // seeds for CPU and GPU PRNG
     unsigned int seedCPU, seedGPU;
-    get_PRNG_seeds(&seedCPU, &seedGPU);
+    // get_PRNG_seeds(&seedCPU, &seedGPU);
     seedCPU = 1234; seedGPU = 1234;
     printf("# seedCPU = %u seedGPU = %u\n", seedCPU, seedGPU);
 
@@ -46,8 +46,8 @@ int main(int argc, char *argv[])
     curandSetPseudoRandomGeneratorSeed(gen, seedGPU);
 
     // device memory for spins, local magnetization, and energy
-    // variable type: "int" (4 byte) or "signed int" (1 byte)
-    // spin_t = int or signed int 
+    // variable type: "int" (4 byte) or "signed char" (1 byte)
+    // spin_t = int or signed char 
     spin_t *devSpinA, *devSpinB, *devMaglocal, *devElocal;
 
     // memory allocation
@@ -69,6 +69,7 @@ int main(int argc, char *argv[])
         curandGenerateUniform(gen, devRand, nSitesHalf);
         init_rand_spins<<<nBlocks, nThreads>>>(devSpinB, devRand);
 
+        printf("# Lsize beta t Energy Magnetization\n");
         for(int t=1; t<=tmax; t++) {
             // random numbers generation 
             curandGenerateUniform(gen, devRand, nSitesHalf);
