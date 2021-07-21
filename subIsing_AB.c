@@ -10,6 +10,11 @@
 
 const int nNeighbor = 4;
 
+void error_output(const char *desc)
+{
+    printf("%s\n", desc) ; exit(-1) ;
+}
+
 // random sublattice spin flips using the Metropolis algorithm
 // A (B) sublattice update when even_odd = 0 (1)
 // neighbors of an A site (x,y) = (x,y+1), (x,y-1), (x-(-1)^y,y), (x,y) 

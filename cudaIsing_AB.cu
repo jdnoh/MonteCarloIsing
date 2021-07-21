@@ -8,6 +8,7 @@ typedef signed char spin_t;
 
 int main(int argc, char *argv[])
 {
+    if(argc!=4) error_output("command Lsize tmax delt");
     const int Lsize = atoi(argv[1]); // input of lattice size
     const int tmax = atoi(argv[2]);  // input of simulation time
     const int delt = atoi(argv[3]);  // input of measurement interval
