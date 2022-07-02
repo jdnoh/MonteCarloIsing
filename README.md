@@ -3,7 +3,7 @@ Monte Carlo simulation of the 2D Ising model on the square lattice of size LxL
 This program is written in CUDA and tested on Ubuntu 21.04 with CUDA-tool-kit 11.
 
 1) hwo to compile
-  $ nvcc -O2 cudaIsing_AB.cu -lculand_static -lculibos -lm
+  $ nvcc -O2 cudaIsing_AB.cu -lcurand_static -lculibos -lm
 
 2) how to run
   $ ./a.out 1024 1000 10
